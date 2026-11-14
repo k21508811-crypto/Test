@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private var cameraFile: File? = null
     private var pendingWebPermission: PermissionRequest? = null
     private var requestedWebResources: Array<String> = emptyArray()
+    private var pageFailed = false
 
     companion object {
         private const val FILE_CHOOSER_REQUEST = 4102
@@ -74,7 +75,8 @@ class MainActivity : AppCompatActivity() {
             loadsImagesAutomatically = true
             javaScriptCanOpenWindowsAutomatically = true
             cacheMode = WebSettings.LOAD_DEFAULT
-            allowFileAccess = false
+            // Разрешаем чтение только доверенного HTML из assets приложения.
+            allowFileAccess = true
             allowContentAccess = true
             mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
         }
@@ -99,14 +101,21 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
 
+            override fun onPageStarted(view: WebView, url: String, favicon: android.graphics.Bitmap?) {
+                pageFailed = false
+            }
+
             override fun onPageFinished(view: WebView, url: String) {
                 swipe.isRefreshing = false
-                if (offlinePanel.visibility == View.VISIBLE) showWeb()
+                if (!pageFailed && offlinePanel.visibility == View.VISIBLE) showWeb()
                 CookieManager.getInstance().flush()
             }
 
             override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
-                if (request.isForMainFrame) showOffline("Ошибка загрузки: ${error.errorCode} — ${error.description}")
+                if (request.isForMainFrame) {
+                    pageFailed = true
+                    showOffline("Ошибка загрузки: ${error.errorCode} — ${error.description}")
+                }
             }
         }
 
@@ -177,7 +186,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadHome() {
-        if (isOnline()) { showWeb(); webView.loadUrl(HOME_URL) }
+        if (isOnline()) { pageFailed = false; showWeb(); webView.loadUrl(HOME_URL) }
         else showOffline("Нет подключения к интернету")
     }
 
