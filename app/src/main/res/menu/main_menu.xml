@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item android:id="@+id/menu_home" android:title="Главная"/>
+ <item android:id="@+id/menu_request" android:title="Подать заявку"/>
+ <item android:id="@+id/menu_account" android:title="Кабинет"/>
+ <item android:id="@+id/menu_staff" android:title="Инспекторы"/>
+ <item android:id="@+id/menu_report" android:title="Отчёт инспектору"/>
+ <item android:id="@+id/menu_widget" android:title="Виджет проверки / реестр / тарифы"/>
+ <item android:id="@+id/menu_about" android:title="О приложении"/>
+</menu>

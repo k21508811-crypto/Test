@@ -1,0 +1,5 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="28dp" android:background="@color/background">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Нет подключения к интернету" android:textColor="@color/text_primary" android:textSize="22sp" android:textStyle="bold" android:gravity="center"/>
+ <TextView android:id="@+id/offlineMessage" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Проверьте соединение и попробуйте снова." android:textColor="@color/text_secondary" android:gravity="center"/>
+ <Button android:id="@+id/retryButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:text="Повторить" android:backgroundTint="@color/primary" android:textColor="@color/white"/>
+</LinearLayout>

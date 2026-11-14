@@ -1,0 +1,11 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/background">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="О приложении" android:textColor="@color/text_primary" android:textSize="26sp" android:textStyle="bold"/>
+  <TextView android:id="@+id/versionText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:textColor="@color/text_primary" android:textSize="16sp"/>
+  <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Платформа: Проверка.29 — независимая проверка качества товаров и организаций Архангельской области" android:textColor="@color/text_secondary"/>
+  <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Телефон поддержки: +7 (800) 000-00-00" android:textColor="@color/text_primary"/>
+  <Button android:id="@+id/supportButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Написать в поддержку"/>
+  <Button android:id="@+id/callButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Позвонить"/>
+  <Button android:id="@+id/browserButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Открыть сайт в браузере"/>
+ </LinearLayout>
+</ScrollView>
